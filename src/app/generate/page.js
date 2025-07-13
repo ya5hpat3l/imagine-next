@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Slider } from "@/components/ui/slider"
 import { Download, Settings, Share2, Sparkles, ArrowLeft, Zap, Clock, Star, Database, Cpu, Rocket, Gauge, Car, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useAuth } from "@clerk/nextjs";
 import { redirect } from "next/navigation"
 
