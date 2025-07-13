@@ -78,10 +78,6 @@ export default function Generate(){
 
   const { getToken, isSignedIn } = useAuth();
 
-  if(!isSignedIn) {
-    return redirect("/")
-  }
-
   const [prompt, setPrompt] = useState("")
   const [isPublic, setIsPublic] = useState(true)
   const [model, setModel] = useState("flux-dev")
@@ -91,6 +87,12 @@ export default function Generate(){
   const [generatedImages, setGeneratedImages] = useState([])
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isRefining, setIsRefining] = useState(false)
+
+  useEffect(() => {
+    if(!isSignedIn) {
+      return redirect("/")
+    }
+  }, [isSignedIn])
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return
