@@ -128,10 +128,6 @@ export default function Generate(){
     }
   }
 
-  const handleSave = async () => {
-    console.log("Saving images:", { prompt, model, profile, isPublic, images: generatedImages })
-  }
-
   const handleImagine = async () => {
     setIsRefining(true)
 
@@ -380,9 +376,6 @@ export default function Generate(){
                     <div className="text-center">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
                       <p className="text-gray-600">Creating your masterpiece{batchSize[0] > 1 ? "s" : ""}...</p>
-                      <p className="text-sm text-gray-500 mt-1">
-                        Using {selectedModel?.label} with {selectedProfile?.label} profile
-                      </p>
                     </div>
                   ) : currentImage ? (
                     <div className="w-full h-full relative">
@@ -414,25 +407,12 @@ export default function Generate(){
                       <p className="text-gray-600">
                         Your generated image{batchSize[0] > 1 ? "s" : ""} will appear here
                       </p>
-                      <p className="text-sm text-gray-500 mt-1">Ready to create with {selectedModel?.label}</p>
                     </div>
                   )}
                 </div>
 
                 {generatedImages.length > 0 && (
                   <div className="mt-6 space-y-4">
-                    <div className="flex gap-2">
-                      <Button onClick={handleSave} className="flex-1">
-                        Save {generatedImages.length > 1 ? "All" : ""} to Gallery
-                      </Button>
-                      <Button variant="outline" size="icon">
-                        <Download className="h-4 w-4" />
-                      </Button>
-                      <Button variant="outline" size="icon">
-                        <Share2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-
                     {generatedImages.length > 1 && (
                       <div className="grid grid-cols-4 gap-2">
                         {generatedImages.map((img, index) => (
@@ -459,22 +439,16 @@ export default function Generate(){
                       <p className="text-xs text-gray-600 mb-2">{prompt}</p>
                       <div className="flex gap-2 flex-wrap">
                         <Badge variant="secondary" className="text-xs">
-                          {selectedModel?.label}
-                        </Badge>
-                        <Badge variant="secondary" className="text-xs">
-                          {selectedProfile?.label}
-                        </Badge>
-                        <Badge variant="secondary" className="text-xs">
                           {generatedImages.length} image{generatedImages.length > 1 ? "s" : ""}
                         </Badge>
                         <Badge variant="secondary" className="text-xs">
                           {isPublic ? "Public" : "Private"}
                         </Badge>
-                        {currentImage?.seed && (
+                        {/* {currentImage?.seed && (
                           <Badge variant="secondary" className="text-xs">
                             Seed: {currentImage.seed}
                           </Badge>
-                        )}
+                        )} */}
                       </div>
                     </div>
                   </div>

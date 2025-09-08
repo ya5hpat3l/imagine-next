@@ -8,7 +8,7 @@ import {
   SignedOut,
 } from '@clerk/nextjs'
 import { Button } from "@/components/ui/button";
-import { icons, Plus, Sparkle } from "lucide-react";
+import { Plus, Sparkle, CompassIcon, House } from "lucide-react";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -60,10 +60,14 @@ export default function RootLayout({ children }) {
             <div className="w-full order-3 md:order-none md:w-auto mt-2 md:mt-0 flex gap-2 items-center overflow-scroll scrollbar-hidden">
               <SignedIn>
                 <Link className="flex-1" href={"/dashboard"}>
-                  <Button className="w-full font-bold" variant="secondary">Dashboard</Button>
+                  <Button className="w-full font-bold" variant="secondary">
+                    <House className="h-4 w-4 mr-1" />
+                    Dashboard
+                  </Button>
                 </Link>
                 <Link className="flex-1" href={"/explore"}>
                   <Button className="font-bold w-full" variant="secondary">
+                    <CompassIcon className="h-4 w-4 mr-1" />
                     Explore
                   </Button>
                 </Link>

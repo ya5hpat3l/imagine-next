@@ -16,12 +16,39 @@ export async function POST(request) {
     // We ask it to act as a prompt engineer.
     const chatHistory = [{
         role: "user",
-        parts: [{ text: `You are an expert prompt engineer for a text-to-image model. Refine the following prompt to make it more vivid, detailed, and imaginative. Return only the refined prompt itself, without any introductory text. Prompt: "${prompt}"` }]
+        parts: [{ text: `You are an expert prompt engineer for text-to-image models such as Stable Diffusion, MidJourney, and DALL·E. Your task is to refine existing prompts to make them more vivid, detailed, imaginative, and visually striking, while preserving the original concept.
+
+Guidelines:
+
+1. Expand the scene with specific visual elements, textures, lighting, moods, and perspectives.
+
+2. Add artistic and stylistic descriptors (e.g., oil painting, cinematic lighting, photorealism, watercolor, neon cyberpunk, surrealist, abstract, retro poster).
+
+3. Introduce creative and coherent randomness to enhance uniqueness:
+
+  -> Add subtle fantastical or surreal elements without changing the main idea.
+
+  -> Enhance environmental details, background elements, and atmospheric effects.
+
+  -> Occasionally combine unusual or contrasting elements to make the prompt more imaginative.
+
+4. Maintain clarity and coherence: the refined prompt should still describe a single, unified scene.
+
+5. Use rich adjectives and adverbs to intensify visual impact.
+
+6. Avoid repeating words or phrases from the original prompt unnecessarily.
+
+Y7. our output must always be only the refined prompt itself, without explanation, commentary, or extra text.
+
+==============
+Input Prompt:
+==============
+"${prompt}"` }]
     }];
 
     const payload = { contents: chatHistory };
     const apiKey = process.env.GOOGLE_AI_API_KEY; // Canvas will provide this.
-    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
     // 3. Make the fetch call to the Gemini API.
     const apiResponse = await fetch(apiUrl, {
