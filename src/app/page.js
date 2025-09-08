@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, MessageCircle, Sparkles, Users } from "lucide-react";
+import { Heart, MessageCircle, Sparkles, Users, Zap, Palette, Car } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -30,9 +30,9 @@ export default function Home() {
     }
   }, [isSignedIn]);
 
-      return(
-      // null
-      <div className="w-full bg-">
+  return (
+    // null
+    <div className="w-full bg-">
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">Generate Amazing Images with AI</h2>
@@ -41,14 +41,9 @@ export default function Home() {
             from other artists.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Link href="/sign-up">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
-                Start Creating
-              </Button>
-            </Link>
             <Link href="/explore">
-              <Button size="lg" variant="outline">
-                Explore Gallery
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
+              Explore Gallery
               </Button>
             </Link>
           </div>
@@ -71,7 +66,7 @@ export default function Home() {
       {/* Features */}
       <section className="container mx-auto px-0 py-16">
         <div className="grid md:grid-cols-3 gap-8">
-          <Card>
+          {/* <Card>
             <CardHeader>
               <Sparkles className="h-12 w-12 text-purple-600 mb-4" />
               <CardTitle>AI Image Generation</CardTitle>
@@ -91,12 +86,36 @@ export default function Home() {
             <CardHeader>
               <div className="flex items-center gap-2 mb-4">
                 <Heart className="h-12 w-12 text-red-500" />
-                {/* <MessageCircle className="h-12 w-12 text-green-500" /> */}
               </div>
               <CardTitle>Social Features</CardTitle>
               <CardDescription>Like, comment, and engage with the creative community</CardDescription>
             </CardHeader>
-          </Card>
+          </Card> */}
+
+            <Card className="text-center p-6 bg-white rounded-xl shadow-sm">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="h-8 w-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Lightning Fast</h3>
+              <p className="text-gray-600">Generate high-quality images in seconds with our advanced AI models.</p>
+            </Card>
+            
+            <Card className="text-center p-6 bg-white rounded-xl shadow-sm">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Palette className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Endless Creativity</h3>
+              <p className="text-gray-600">From photorealistic to artistic styles, create any image you can imagine.</p>
+            </Card>
+
+            <Card className="text-center p-6 bg-white rounded-xl shadow-sm">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Share & Discover</h3>
+              <p className="text-gray-600">Join our community to share your creations and discover amazing art.</p>
+            </Card>
+
         </div>
       </section>
 
